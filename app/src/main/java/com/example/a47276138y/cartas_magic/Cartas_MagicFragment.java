@@ -1,8 +1,10 @@
 package com.example.a47276138y.cartas_magic;
 
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,14 +83,28 @@ public class Cartas_MagicFragment extends Fragment {
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
     }
 
 
     private void refresh() {
 
+        RefreshDataTask task = new RefreshDataTask();
+        task.execute();
     }
 
+
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            MagicTheGatheringAPI api = new MagicTheGatheringAPI();
+            String result = api.getCartes();
+
+            Log.d("DEBUG", result.toString());
+            return null;
+            }
+
+    }
 
 }

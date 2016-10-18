@@ -11,26 +11,29 @@ public class Carta {
     };
 
     private String name;
-    private String colors;
+    private String rarity;
     private String tipus; //Una carta pot formar aprt de superTipus, tipus i subTipus. Aquesta propietat els inclourà tots.
     private String numeroCarta; //L'API indica que alguns numeros de carta poden ser lletres.
-    private String poder; //Algunes cartes tenen com a poder 1+, per tant la propietat ha de ser de tipus String.
+    private String poder; //
+    private String imageURL;
+    // Algunes cartes tenen com a poder 1+, per tant la propietat ha de ser de tipus String.
 
 
+    public String getName() { return name; }
+    public void setName(String name) {this.name = name;}
+    public String getRarity() { return rarity; }
+    public void setRarity(String rarity) { this.rarity = rarity; }
     public String getTipos() { return tipus; }
     public void setTipos(String tipos) { this.tipus = tipos; }
     public String getNumeroCarta() { return numeroCarta; }
     public void setNumeroCarta(String numeroCarta) { this.numeroCarta = numeroCarta; }
     public String getPoder() { return poder; }
     public void setPoder(String poder) { this.poder = poder; }
-    public String getColors() { return colors; }
-    public void setColors(String colors) { this.colors = colors; }
-    public String getName() { return name; }
-    public void setName(String name) {this.name = name;}
+
 
     @Override
     public String toString(){
-        return  "\n\t\t" + name + "\n\t\t" + colors +  "\n\t\t" + tipus +  "\n\t\t" + numeroCarta +  "\n\t\t" + poder;
+        return  "\n\t\t" + name + "\n\t\t" + rarity +  "\n\t\t" + tipus +  "\n\t\t" + numeroCarta +  "\n\t\t" + poder;
     }
 
 
