@@ -1,6 +1,7 @@
 package com.example.a47276138y.cartas_magic;
 
 import android.net.Uri;
+import android.support.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,28 +37,18 @@ public class MagicTheGatheringAPI{
 
                 cartes.add(c);
 
-
             }
 
             return cartes;
-
         }
 
 
-        public String getCartes(){
-
-            Uri builturi = Uri.parse(BASE_URL)
-                    .buildUpon()
-                    //.appendPath("cards")
-                    .build();
-            String url = builturi.toString();
-
+        @Nullable
+        private ArrayList<Carta> doCall(String url) throws IOException {
+            String JsonResponse = HttpUtils.get(url);
             try {
-
-                String JsonResponse = HttpUtils.get(url);
-                return JsonResponse;
-
-            } catch (IOException e) {
+                return jsonProcess(JsonResponse);
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;
@@ -65,5 +56,14 @@ public class MagicTheGatheringAPI{
 
 
 
+        public ArrayList<Carta> getCartes() throws IOException {
 
+            Uri builturi = Uri.parse(BASE_URL)
+                .buildUpon()
+                .build();
+            String url = builturi.toString();
+
+            return doCall(url);
+
+    }
 }

@@ -19,6 +19,7 @@ import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -94,17 +95,30 @@ public class Cartas_MagicFragment extends Fragment {
     }
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void>{
+    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>>{
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected ArrayList<Carta> doInBackground(Void... voids) {
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
-            String result = api.getCartes();
-
-            Log.d("DEBUG", result.toString());
-            return null;
+            ArrayList<Carta> result = null;
+            try {
+                result = api.getCartes();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
+            Log.d("DEBUG", result.toString());
+            return result;
+            }
+    }
+
+
+
+    protected void onPostExecute(ArrayList<Carta> cartes) {
+        adapter.clear();
+        for (Carta carta : cartes) {
+            adapter.add(carta.getName());
+        }
     }
 
 }
