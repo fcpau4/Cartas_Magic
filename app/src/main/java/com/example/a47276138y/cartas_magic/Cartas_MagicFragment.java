@@ -28,8 +28,11 @@ import java.util.Arrays;
  */
 public class Cartas_MagicFragment extends Fragment {
 
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> dataList;
+
+    public ArrayList<Carta> dataList;
+    private ArrayAdapter<Carta> adapter;
+
+
 
     public Cartas_MagicFragment() {
     }
@@ -53,19 +56,19 @@ public class Cartas_MagicFragment extends Fragment {
         ListView listaCartas = (ListView) view.findViewById(R.id.listaCartas);
 
         String[] data = {"carta1", "carta2", "carta3", "carta4"};
-        dataList = new ArrayList<>(Arrays.asList(data));
+        dataList = new ArrayList<>();
 
-        adapter = new ArrayAdapter<>(
+        adapter = new CartasAdapter(
                 getContext(),
                 R.layout.lista_cartas_row,
-                R.id.carta,
                 dataList
         );
-
         listaCartas.setAdapter(adapter);
 
         return view;
     }
+
+
 
 
     @Override
@@ -74,25 +77,36 @@ public class Cartas_MagicFragment extends Fragment {
         inflater.inflate(R.menu.menu_cartas__magic, menu);
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
         if(id==R.id.action_refresh){
             refresh();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
-    private void refresh() {
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }
+
+
+
+
+    private void refresh() {
         RefreshDataTask task = new RefreshDataTask();
         task.execute();
     }
+
 
 
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>>{
@@ -117,7 +131,7 @@ public class Cartas_MagicFragment extends Fragment {
     protected void onPostExecute(ArrayList<Carta> cartes) {
         adapter.clear();
         for (Carta carta : cartes) {
-            adapter.add(carta.getName());
+            adapter.add(carta);
         }
     }
 
