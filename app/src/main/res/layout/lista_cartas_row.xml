@@ -5,13 +5,18 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="@string/textview"
+        android:text="@string/nuevo_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/carta"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        tools:minHeight="?attr/listPreferredItemHeight"
+        tools:style="@style/Base.TextAppearance.AppCompat.Medium" />
 </android.support.constraint.ConstraintLayout>

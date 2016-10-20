@@ -36,14 +36,12 @@ public class MagicTheGatheringAPI{
                 c.setPoder(jsonCarta.getString("power"));
 
                 cartes.add(c);
-
             }
-
             return cartes;
         }
 
 
-        @Nullable
+
         private ArrayList<Carta> doCall(String url) throws IOException {
             String JsonResponse = HttpUtils.get(url);
             try {
