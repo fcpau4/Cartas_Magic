@@ -114,24 +114,24 @@ public class Cartas_MagicFragment extends Fragment {
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
-            ArrayList<Carta> result = null;
+            ArrayList<Carta> result= new ArrayList<>() ;
             try {
+                Log.d("doInBackground()", "comes in");
                 result = api.getCartes();
+                Log.d("doInBackground()", "length result: "+ result.size());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            Log.d("DEBUG", result.toString());
             return result;
             }
-    }
 
-
-
-    protected void onPostExecute(ArrayList<Carta> cartes) {
-        adapter.clear();
-        for (Carta carta : cartes) {
-            adapter.add(carta);
+        @Override
+        protected void onPostExecute(ArrayList<Carta> cartes) {
+            super.onPostExecute(cartes);
+            adapter.clear();
+            for (Carta carta : cartes) {
+                adapter.add(carta);
+            }
         }
     }
 

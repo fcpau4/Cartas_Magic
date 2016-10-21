@@ -2,6 +2,7 @@ package com.example.a47276138y.cartas_magic;
 
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,18 +23,22 @@ public class MagicTheGatheringAPI{
 
             ArrayList<Carta> cartes = new ArrayList<>();
 
-            JSONObject info = new JSONObject();
+            JSONObject info = new JSONObject(jsonResponse);
             JSONArray jsonCartes = info.getJSONArray("cards");
-
+            Log.d("jsonProcess()", "length jsonCartes: "+ jsonCartes.length());
             for (int i = 0; i < jsonCartes.length() ; i++) {
                 JSONObject jsonCarta =  jsonCartes.getJSONObject(i);
-
+                Log.d("jsonProcess()", "jsonCarta Name: "+ jsonCarta.getString("name"));
                 Carta c = new Carta();
                 c.setName(jsonCarta.getString("name"));
                 c.setRarity(jsonCarta.getString("rarity"));
                 c.setTipos(jsonCarta.getString("type"));
-                c.setNumeroCarta(jsonCarta.getString("number"));
-                c.setPoder(jsonCarta.getString("power"));
+                if(jsonCarta.has("number")) {
+                    c.setNumeroCarta(jsonCarta.getString("number"));
+                }
+                if(jsonCarta.has("power")) {
+                    c.setPoder(jsonCarta.getString("power"));
+                }
 
                 cartes.add(c);
             }
@@ -55,12 +60,11 @@ public class MagicTheGatheringAPI{
 
 
         public ArrayList<Carta> getCartes() throws IOException {
-
             Uri builturi = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
             String url = builturi.toString();
-
+            Log.d("getCartes()", url);
             return doCall(url);
 
     }
