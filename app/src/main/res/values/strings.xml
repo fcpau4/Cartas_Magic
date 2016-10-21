@@ -4,4 +4,7 @@
     <string name="textview">TextView</string>
     <string name="refresh">Refresh</string>
     <string name="nuevo_texto">Nuevo Texto</string>
+    <string name="name">name</string>
+    <string name="types">types</string>
+    <string name="name2">Name</string>
 </resources>
