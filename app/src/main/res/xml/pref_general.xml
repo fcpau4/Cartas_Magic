@@ -33,6 +33,8 @@
     <ListPreference
         android:defaultValue="-1"
         android:title="Rarity"
-
+        android:key="rarity_pref"
+        android:entries="@array/list_pref_rarity_entries"
+        android:entryValues="@array/list_pref_rarity_values"
         />
 </PreferenceScreen>

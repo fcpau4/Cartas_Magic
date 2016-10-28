@@ -35,7 +35,7 @@
         <item>0</item>
         <item>-1</item>
     </string-array>
-
+    
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
@@ -70,9 +70,28 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+
+    <string-array name="list_pref_rarity_entries">
+        <item>Comú</item>
+        <item>Desconegut</item>
+        <item>Rar</item>
+        <item>Rar Mític</item>
+        <item>Especial</item>
+        <item>Terra Bàsica</item>
+    </string-array>
+
+    <!-- Valors de la raresa de les cartes -->
+    <string-array name="list_pref_rarity_values">
+        <item>Common</item>
+        <item>Uncommon</item>
+        <item>Rare</item>
+        <item>Mythic Rare</item>
+        <item>Special</item>
+        <item>Basic Land</item>
+    </string-array>
+
     
-
-
     <string-array name="multi_select_list_preference_default_value" />
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
