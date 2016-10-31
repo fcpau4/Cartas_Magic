@@ -1,6 +1,7 @@
 package com.example.a47276138y.cartas_magic;
 
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -43,6 +44,11 @@ public class Cartas_MagicFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
+
+        PreferenceManager.setDefaultValues(this.getContext(), R.xml.pref_general, false);
+        /*Serveix per inicialitzar el SharedPreferences on es guarden les key úniques (android:key) que utilitza el sistema
+        quan guarda els valors de cada preferència/setting.
+        */
 
     }
 

@@ -36,6 +36,52 @@
         <item>-1</item>
     </string-array>
 
+    <!-- Grup de Preferències: Filtre-->
+
+    <string name="group_filter_name">Selecciona per característica</string>
+
+    <!-- Preferència de Rarity-->
+    <string-array name="pref_rarity_list_values">
+        <item>Common</item>
+        <item>Uncommon</item>
+        <item>Rare</item>
+        <item>Mythic Rare</item>
+        <item>Special</item>
+        <item>Basic Land</item>
+    </string-array>
+
+    <string-array name="pref_rarity_list_titles">
+        <item>Comú</item>
+        <item>No comú</item>
+        <item>Rar</item>
+        <item>Rar Místic</item>
+        <item>Especial</item>
+        <item>De Territori Bàsic</item>
+    </string-array>
+
+    <string name="pref_title_rarity">Raresa</string>
+
+
+    <!-- Preferència de Color-->
+    <string-array name="pref_color_list_entries">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Black</item>
+        <item>Blue</item>
+        <item>White</item>
+    </string-array>
+
+    <string-array name="pref_color_list_values">
+        <item>Vermell</item>
+        <item>Verd</item>
+        <item>Negre</item>
+        <item>Blau</item>
+        <item>Blanc</item>
+    </string-array>
+
+    <string name="pref_title_colors">Color</string>
+
+
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
@@ -70,8 +116,6 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-    
-
 
     <string-array name="multi_select_list_preference_default_value" />
 
