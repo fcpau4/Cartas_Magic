@@ -61,7 +61,6 @@ public class Cartas_MagicFragment extends Fragment {
 
         ListView listaCartas = (ListView) view.findViewById(R.id.listaCartas);
 
-        String[] data = {"carta1", "carta2", "carta3", "carta4"};
         dataList = new ArrayList<>();
 
         adapter = new CartasAdapter(
@@ -122,9 +121,8 @@ public class Cartas_MagicFragment extends Fragment {
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
             ArrayList<Carta> result= new ArrayList<>() ;
             try {
-                Log.d("doInBackground()", "comes in");
                 result = api.getCartes();
-                Log.d("doInBackground()", "length result: "+ result.size());
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

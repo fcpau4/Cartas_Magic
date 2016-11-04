@@ -25,20 +25,26 @@ public class MagicTheGatheringAPI{
 
             JSONObject info = new JSONObject(jsonResponse);
             JSONArray jsonCartes = info.getJSONArray("cards");
-            Log.d("jsonProcess()", "length jsonCartes: "+ jsonCartes.length());
+
+
             for (int i = 0; i < jsonCartes.length() ; i++) {
+
                 JSONObject jsonCarta =  jsonCartes.getJSONObject(i);
-                Log.d("jsonProcess()", "jsonCarta Name: "+ jsonCarta.getString("name"));
+
+
                 Carta c = new Carta();
+
                 c.setName(jsonCarta.getString("name"));
-                c.setRarity(jsonCarta.getString("rarity"));
                 c.setTipos(jsonCarta.getString("type"));
-                if(jsonCarta.has("number")) {
+                c.setImgURL(jsonCarta.getString("imageUrl"));
+
+
+                /*if(jsonCarta.has("number")) {
                     c.setNumeroCarta(jsonCarta.getString("number"));
                 }
                 if(jsonCarta.has("power")) {
                     c.setPoder(jsonCarta.getString("power"));
-                }
+                }*/
 
                 cartes.add(c);
             }
