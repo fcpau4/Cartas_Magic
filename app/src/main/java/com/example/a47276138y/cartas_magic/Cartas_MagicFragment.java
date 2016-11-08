@@ -1,5 +1,6 @@
 package com.example.a47276138y.cartas_magic;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -90,6 +91,12 @@ public class Cartas_MagicFragment extends Fragment {
         int id = item.getItemId();
         if(id==R.id.action_refresh){
             refresh();
+            return true;
+        }
+
+        if(id==R.id.action_settings){
+            Intent i = new Intent(getContext(), SettingsActivity.class);
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);

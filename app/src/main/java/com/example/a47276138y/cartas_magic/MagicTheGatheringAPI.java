@@ -71,6 +71,24 @@ public class MagicTheGatheringAPI{
             String url = builturi.toString();
             Log.d("getCartes()", url);
             return doCall(url);
-
     }
+
+    public ArrayList<Carta>getCardsByColor() throws IOException {
+        Uri builturi = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("colors", "-1")
+                .build();
+        String url = builturi.toString();
+        return doCall(url);
+    }
+
+    public ArrayList<Carta>getCardsByRarity() throws IOException {
+        Uri builturi = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("rarity", "-1")
+                .build();
+        String url = builturi.toString();
+        return doCall(url);
+    }
+
 }
