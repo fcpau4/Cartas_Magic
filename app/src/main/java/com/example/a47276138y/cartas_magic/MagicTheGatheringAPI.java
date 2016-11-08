@@ -64,7 +64,6 @@ public class MagicTheGatheringAPI{
         }
 
 
-
         public ArrayList<Carta> getCartes() throws IOException {
             Uri builturi = Uri.parse(BASE_URL)
                 .buildUpon()
