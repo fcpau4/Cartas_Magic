@@ -128,6 +128,8 @@ public class Cartas_MagicFragment extends Fragment {
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
             ArrayList<Carta> result= new ArrayList<>() ;
             try {
+
+
                 result = api.getCartes();
 
             } catch (IOException e) {
