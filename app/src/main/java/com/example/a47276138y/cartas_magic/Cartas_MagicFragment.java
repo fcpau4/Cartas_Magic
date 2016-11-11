@@ -1,6 +1,7 @@
 package com.example.a47276138y.cartas_magic;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -125,12 +126,22 @@ public class Cartas_MagicFragment extends Fragment {
 
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String rarity = preferences.getString("rarity_list", "-1");
+            String color = preferences.getString("color_list", "-1");
+
+
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
             ArrayList<Carta> result= new ArrayList<>() ;
             try {
-
-
-                result = api.getCartes();
+                if(rarity.equals("Common")){
+                    result = api.getCardsByRarity();
+                }else if(color.equals("white")){
+                    result = api.getCardsByColor();
+                }else{
+                    result = api.getCartes();
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();

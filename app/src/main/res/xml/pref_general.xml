@@ -30,22 +30,18 @@
         android:positiveButtonText="@null"
         android:title="@string/pref_title_add_friends_to_messages" />
 
-   <PreferenceCategory
-       android:title="@string/group_filter_name"
-       android:key="group_filter">
+    <ListPreference
+        android:defaultValue="Common"
+        android:title="@string/pref_title_rarity"
+        android:key="rarity_list"
+        android:entries="@array/pref_rarity_list_titles"
+        android:entryValues="@array/pref_rarity_list_values" />
 
-        <ListPreference
-            android:defaultValue="-1"
-            android:title="@string/pref_title_rarity"
-            android:key="rarity_list"
-            android:entries="@array/pref_rarity_list_titles"
-            android:entryValues="@array/pref_rarity_list_values" />
+    <ListPreference
+        android:defaultValue="white"
+        android:title="@string/pref_title_colors"
+        android:key="color_list"
+        android:entries="@array/pref_color_list_entries"
+        android:entryValues="@array/pref_color_list_values" />
 
-        <ListPreference
-            android:defaultValue="-1"
-            android:title="@string/pref_title_colors"
-            android:key="color_list"
-            android:entries="@array/pref_color_list_entries"
-            android:entryValues="@array/pref_color_list_values" />
-   </PreferenceCategory>
 </PreferenceScreen>
