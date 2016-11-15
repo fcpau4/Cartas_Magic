@@ -46,8 +46,10 @@ public class CartasAdapter extends ArrayAdapter<Carta> {
         name_carta.setText(carta.getName());
         carta_tipos.setText(carta.getTipus());
         Glide.with(getContext()).load(carta.getImgURL()).into(card_img);
-        if(carta_color.equals("null")) {
-            carta_color.setText(carta.getColor());
+        carta_color.setText(carta.getColor());
+
+        if(carta.getColor().equals("null")) {
+            carta_color.setText(carta.getColor().substring(2, carta.getColor().length()-2));
         }
         carta_rarity.setText(carta.getRarity());
 

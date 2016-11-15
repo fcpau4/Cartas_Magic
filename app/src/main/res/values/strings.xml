@@ -139,4 +139,6 @@
     <string name="rarity4">Rarity</string>
     <string name="name4">Name</string>
     <string name="type4">Type</string>
+    <string name="hello">Hello</string>
+    <string name="color5">Color</string>
 </resources>
