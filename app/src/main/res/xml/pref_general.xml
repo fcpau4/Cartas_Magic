@@ -31,14 +31,14 @@
         android:title="@string/pref_title_add_friends_to_messages" />
 
     <ListPreference
-        android:defaultValue="Common"
+        android:defaultValue="Mythic Rare"
         android:title="@string/pref_title_rarity"
         android:key="rarity_list"
         android:entries="@array/pref_rarity_list_titles"
         android:entryValues="@array/pref_rarity_list_values" />
 
     <ListPreference
-        android:defaultValue="white"
+        android:defaultValue="White"
         android:title="@string/pref_title_colors"
         android:key="color_list"
         android:entries="@array/pref_color_list_entries"

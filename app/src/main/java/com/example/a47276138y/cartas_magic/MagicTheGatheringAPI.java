@@ -35,16 +35,19 @@ public class MagicTheGatheringAPI{
                 Carta c = new Carta();
 
                 c.setName(jsonCarta.getString("name"));
-                c.setTipos(jsonCarta.getString("type"));
+                if(jsonCarta.has("type")) {
+                    c.setTipus(jsonCarta.getString("type"));
+                }
+
                 c.setImgURL(jsonCarta.getString("imageUrl"));
 
-
-                /*if(jsonCarta.has("number")) {
-                    c.setNumeroCarta(jsonCarta.getString("number"));
+                if(jsonCarta.has("colors")){
+                    c.setColor(jsonCarta.getString("colors"));
                 }
-                if(jsonCarta.has("power")) {
-                    c.setPoder(jsonCarta.getString("power"));
-                }*/
+
+                if(jsonCarta.has("rarity")) {
+                    c.setRarity(jsonCarta.getString("rarity"));
+                }
 
                 cartes.add(c);
             }
@@ -73,21 +76,27 @@ public class MagicTheGatheringAPI{
             return doCall(url);
         }
 
+
+
         public ArrayList<Carta>getCardsByColor() throws IOException {
             Uri builturi = Uri.parse(BASE_URL)
                 .buildUpon()
-                .appendQueryParameter("colors", "-1")
+                .appendQueryParameter("colors", "White")
                 .build();
             String url = builturi.toString();
+            Log.d("getCardsByColor", url);
             return doCall(url);
         }
+
+
 
         public ArrayList<Carta>getCardsByRarity() throws IOException {
             Uri builturi = Uri.parse(BASE_URL)
                 .buildUpon()
-                .appendQueryParameter("rarity", "-1")
+                .appendQueryParameter("rarity", "Common")
                 .build();
             String url = builturi.toString();
+            Log.d("getCardsByRarity", url);
             return doCall(url);
         }
 

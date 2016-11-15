@@ -8,15 +8,18 @@ public class Carta {
 
     private String name;
     private String rarity;
+    private String color;
     private String tipus;
     private String imgURL;
 
     public String getName() { return name; }
     public void setName(String name) {this.name = name;}
+    public String getColor() {return color;}
+    public void setColor(String color) {this.color = color;}
     public String getRarity() { return rarity; }
     public void setRarity(String rarity) { this.rarity = rarity; }
-    public String getTipos() { return tipus; }
-    public void setTipos(String tipos) { this.tipus = tipos; }
+    public String getTipus() {return tipus;}
+    public void setTipus(String tipus) {this.tipus = tipus;}
     public String getImgURL() {return imgURL;}
     public void setImgURL(String imgURL) {this.imgURL = imgURL;}
 
@@ -24,7 +27,7 @@ public class Carta {
 
     @Override
     public String toString(){
-        return  "\n\t\t" + name + "\n\t\t" + rarity +  "\n\t\t" + tipus;
+        return  "\n\t\t" + name + "\n\t\t" + rarity +  "\n\t\t" + tipus + "\n\t\t " + color;
     }
 
 }

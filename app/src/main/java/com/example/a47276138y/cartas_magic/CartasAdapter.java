@@ -1,7 +1,6 @@
 package com.example.a47276138y.cartas_magic;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -38,12 +36,20 @@ public class CartasAdapter extends ArrayAdapter<Carta> {
         }
 
         TextView name_carta = (TextView) convertView.findViewById(R.id.name);
-        TextView carta_tipos = (TextView) convertView.findViewById(R.id.types);
-        ImageView card_img = (ImageView) convertView.findViewById(R.id.img_card);
+        TextView carta_tipos = (TextView) convertView.findViewById(R.id.type);
+        TextView carta_rarity = (TextView) convertView.findViewById(R.id.rarity);
+        TextView carta_color = (TextView) convertView.findViewById(R.id.color);
+        ImageView card_img = (ImageView) convertView.findViewById(R.id.img);
+
+
 
         name_carta.setText(carta.getName());
-        carta_tipos.setText(carta.getTipos());
+        carta_tipos.setText(carta.getTipus());
         Glide.with(getContext()).load(carta.getImgURL()).into(card_img);
+        carta_color.setText(carta.getColor().substring(2, (carta.getColor().length()) - 2));
+        carta_rarity.setText(carta.getRarity());
+
+
 
         return convertView;
 

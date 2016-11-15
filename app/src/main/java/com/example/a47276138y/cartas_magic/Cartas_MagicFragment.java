@@ -128,16 +128,16 @@ public class Cartas_MagicFragment extends Fragment {
         protected ArrayList<Carta> doInBackground(Void... voids) {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String rarity = preferences.getString("rarity_list", "-1");
-            String color = preferences.getString("color_list", "-1");
+            String rarity = preferences.getString("rarity_list", "Mythic Rare");
+            String color = preferences.getString("color_list", "White");
 
 
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
             ArrayList<Carta> result= new ArrayList<>() ;
             try {
-                if(rarity.equals("Common")){
+                if(rarity.equals("Mythic Rare")){
                     result = api.getCardsByRarity();
-                }else if(color.equals("white")){
+                }else if(color.equals("White")){
                     result = api.getCardsByColor();
                 }else{
                     result = api.getCartes();
