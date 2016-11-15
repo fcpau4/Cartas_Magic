@@ -35,18 +35,20 @@ public class CartasAdapter extends ArrayAdapter<Carta> {
             convertView = inflater.inflate(R.layout.lista_cartas_row, parent, false);
         }
 
-        TextView name_carta = (TextView) convertView.findViewById(R.id.name);
-        TextView carta_tipos = (TextView) convertView.findViewById(R.id.type);
-        TextView carta_rarity = (TextView) convertView.findViewById(R.id.rarity);
-        TextView carta_color = (TextView) convertView.findViewById(R.id.color);
-        ImageView card_img = (ImageView) convertView.findViewById(R.id.img);
+        TextView name_carta = (TextView) convertView.findViewById(R.id.nameCard);
+        TextView carta_tipos = (TextView) convertView.findViewById(R.id.typeCard);
+        TextView carta_rarity = (TextView) convertView.findViewById(R.id.rarityCard);
+        TextView carta_color = (TextView) convertView.findViewById(R.id.colorCard);
+        ImageView card_img = (ImageView) convertView.findViewById(R.id.imgCard);
 
 
 
         name_carta.setText(carta.getName());
         carta_tipos.setText(carta.getTipus());
         Glide.with(getContext()).load(carta.getImgURL()).into(card_img);
-        carta_color.setText(carta.getColor().substring(2, (carta.getColor().length()) - 2));
+        if(carta_color.equals("null")) {
+            carta_color.setText(carta.getColor());
+        }
         carta_rarity.setText(carta.getRarity());
 
 
