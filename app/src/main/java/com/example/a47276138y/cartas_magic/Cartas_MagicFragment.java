@@ -104,15 +104,11 @@ public class Cartas_MagicFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onStart() {
         super.onStart();
         refresh();
     }
-
-
 
 
     private void refresh() {
@@ -135,11 +131,10 @@ public class Cartas_MagicFragment extends Fragment {
             MagicTheGatheringAPI api = new MagicTheGatheringAPI();
             ArrayList<Carta> result= new ArrayList<>() ;
             try {
-                if(rarity.equals("Mythic Rare")){
-                    result = api.getCardsByRarity();
-                }else if(color.equals("White")){
-                    result = api.getCardsByColor();
-                }else{
+
+                result = api.getCardsByPreferences(color, rarity);
+
+                if(result==null){
                     result = api.getCartes();
                 }
 

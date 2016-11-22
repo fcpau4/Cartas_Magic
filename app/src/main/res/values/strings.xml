@@ -63,7 +63,7 @@
 
 
     <!-- Preferència de Color-->
-    <string-array name="pref_color_list_entries">
+    <string-array name="pref_color_list_values">
         <item>Red</item>
         <item>Green</item>
         <item>Black</item>
@@ -71,7 +71,7 @@
         <item>White</item>
     </string-array>
 
-    <string-array name="pref_color_list_values">
+    <string-array name="pref_color_list_titles">
         <item>Vermell</item>
         <item>Verd</item>
         <item>Negre</item>

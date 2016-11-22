@@ -39,7 +39,9 @@ public class MagicTheGatheringAPI{
                     c.setTipus(jsonCarta.getString("type"));
                 }
 
-                c.setImgURL(jsonCarta.getString("imageUrl"));
+                if(jsonCarta.has("imageUrl")) {
+                    c.setImgURL(jsonCarta.getString("imageUrl"));
+                }
 
                 if(jsonCarta.has("colors")){
 
@@ -91,26 +93,16 @@ public class MagicTheGatheringAPI{
 
 
 
-        public ArrayList<Carta>getCardsByColor() throws IOException {
+        public ArrayList<Carta>getCardsByPreferences(String colors, String rarity) throws IOException {
             Uri builturi = Uri.parse(BASE_URL)
-                .buildUpon()
-                .appendQueryParameter("colors", "White")
-                .build();
+                    .buildUpon()
+                    .appendQueryParameter("colors", colors)
+                    .appendQueryParameter("rarity", rarity)
+                    .build();
             String url = builturi.toString();
             Log.d("getCardsByColor", url);
             return doCall(url);
         }
 
-
-
-        public ArrayList<Carta>getCardsByRarity() throws IOException {
-            Uri builturi = Uri.parse(BASE_URL)
-                .buildUpon()
-                .appendQueryParameter("rarity", "Common")
-                .build();
-            String url = builturi.toString();
-            Log.d("getCardsByRarity", url);
-            return doCall(url);
-        }
 
 }

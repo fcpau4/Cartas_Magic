@@ -41,7 +41,7 @@
         android:defaultValue="White"
         android:title="@string/pref_title_colors"
         android:key="color_list"
-        android:entries="@array/pref_color_list_entries"
+        android:entries="@array/pref_color_list_titles"
         android:entryValues="@array/pref_color_list_values" />
 
 </PreferenceScreen>
