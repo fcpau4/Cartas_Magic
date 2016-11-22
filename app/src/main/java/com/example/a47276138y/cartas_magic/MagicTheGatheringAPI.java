@@ -42,8 +42,21 @@ public class MagicTheGatheringAPI{
                 c.setImgURL(jsonCarta.getString("imageUrl"));
 
                 if(jsonCarta.has("colors")){
-                    c.setColor(jsonCarta.getString("colors"));
+
+                    String total_colors="";
+                    JSONArray color = jsonCarta.getJSONArray("colors");
+
+                    for (int j = 0; j < color.length(); j++) {
+
+                        total_colors += color.get(j).toString() + ",";
+                    }
+
+                    c.setColor(total_colors.substring(0, total_colors.length()-1));
+
+                }else{
+                    c.setColor("");
                 }
+
 
                 if(jsonCarta.has("rarity")) {
                     c.setRarity(jsonCarta.getString("rarity"));
