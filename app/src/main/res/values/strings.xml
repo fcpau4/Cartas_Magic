@@ -36,9 +36,6 @@
         <item>-1</item>
     </string-array>
 
-    <!-- Grup de Preferències: Filtre-->
-
-    <string name="group_filter_name">Selecciona per característica</string>
 
     <!-- Preferència de Rarity-->
     <string-array name="pref_rarity_list_values">
@@ -141,4 +138,5 @@
     <string name="type4">Type</string>
     <string name="hello">Hello</string>
     <string name="color5">Color</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>
