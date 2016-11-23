@@ -1,10 +1,12 @@
 package com.example.a47276138y.cartas_magic;
 
+import java.io.Serializable;
+
 /**
  * Created by 47276138y on 17/10/16.
  */
 
-public class Carta {
+public class Carta implements Serializable{
 
     private String name;
     private String rarity;
