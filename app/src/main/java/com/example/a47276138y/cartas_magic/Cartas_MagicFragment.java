@@ -70,8 +70,8 @@ public class Cartas_MagicFragment extends Fragment {
         listaCartas.setOnClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                    Carta c = (Carta) adapterView.getItemAtPosition(i);
             }
         });
 
