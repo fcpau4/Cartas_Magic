@@ -71,9 +71,12 @@ public class Cartas_MagicFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-                    Carta c = (Carta) adapterView.getItemAtPosition(i);
+                    Carta carta = (Carta) adapterView.getItemAtPosition(i);
 
                     Intent intent = new Intent(getContext(), DetailActivity.class);
+                    intent.putExtra("carta", carta);
+
+                    startActivity(intent);
             }
         });
 
