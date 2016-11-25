@@ -27,7 +27,7 @@
         android:id="@+id/title_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Titulo"
+        android:text="@string/titulo_detalle"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginEnd="8dp"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:text="Type"
+        android:text="Type detalle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/type_detail"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_detail" />
 
     <TextView
-        android:text="Rarity"
+        android:text="@string/rarity_detalle"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:id="@+id/rarity_detail"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/type_detail" />
 
     <TextView
-        android:text="Color"
+        android:text="@string/color_detalle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/color_detail"
@@ -77,8 +77,8 @@
         android:layout_marginRight="8dp" />
 
     <TextView
-        android:text="Resistencia"
-        android:layout_width="0dp"
+        android:text="@string/resistencia_detalle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/resistencia"
         android:layout_marginEnd="8dp"
@@ -96,7 +96,7 @@
         android:id="@+id/text_detail"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/resistencia"
-        android:text="Text"
+        android:text="@string/text_detalle"
         android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@+id/image_detail"
         android:layout_marginLeft="8dp"
@@ -107,7 +107,7 @@
         android:layout_marginBottom="8dp" />
 
     <android.support.constraint.Guideline
-        android:layout_width="384dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
         app:layout_constraintGuide_begin="212dp"
