@@ -59,9 +59,16 @@ public class MagicTheGatheringAPI{
                     c.setColor("");
                 }
 
-
                 if(jsonCarta.has("rarity")) {
                     c.setRarity(jsonCarta.getString("rarity"));
+                }
+
+                if(jsonCarta.has("resistencia")){
+                    c.setResistencia(jsonCarta.getString("toughness"));
+                }
+
+                if(jsonCarta.has("text")){
+                    c.setText(jsonCarta.getString("text"));
                 }
 
                 cartes.add(c);

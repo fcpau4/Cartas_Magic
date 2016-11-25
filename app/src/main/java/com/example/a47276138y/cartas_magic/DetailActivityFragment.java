@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import static com.example.a47276138y.cartas_magic.R.id.title_detail;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class DetailActivityFragment extends Fragment {
-
 
     private ImageView image_detail;
     private TextView title_detail;
@@ -25,7 +26,6 @@ public class DetailActivityFragment extends Fragment {
     private TextView color_detail;
     private TextView resistencia;
     private TextView text_detail;
-
 
     private View view;
 
@@ -60,6 +60,16 @@ public class DetailActivityFragment extends Fragment {
         color_detail = (TextView) view.findViewById(R.id.color_detail);
         resistencia= (TextView) view.findViewById(R.id.resistencia);
         text_detail = (TextView) view.findViewById(R.id.text_detail);
+
+
+        Glide.with(getContext()).load(carta.getImgURL()).into(image_detail);
+        title_detail.setText(carta.getName());
+        type_detail.setText(carta.getTipus());
+        rarity_detail.setText(carta.getRarity());
+        color_detail.setText(carta.getColor());
+        resistencia.setText(carta.getResistencia());
+        text_detail.setText(carta.getText());
+
 
         Log.d("CARTA", carta.toString());
     }

@@ -8,11 +8,15 @@ import java.io.Serializable;
 
 public class Carta implements Serializable{
 
+    private String imgURL;
     private String name;
+    private String tipus;
     private String rarity;
     private String color;
-    private String tipus;
-    private String imgURL;
+    private String resistencia;
+    private String text;
+
+
 
     public String getName() { return name; }
     public void setName(String name) {this.name = name;}
@@ -24,7 +28,10 @@ public class Carta implements Serializable{
     public void setTipus(String tipus) {this.tipus = tipus;}
     public String getImgURL() {return imgURL;}
     public void setImgURL(String imgURL) {this.imgURL = imgURL;}
-
+    public String getResistencia() {return resistencia;}
+    public void setResistencia(String resistencia) {this.resistencia = resistencia;}
+    public String getText() {return text;}
+    public void setText(String text) {this.text = text;}
 
 
     @Override
