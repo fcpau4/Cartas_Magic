@@ -67,7 +67,7 @@ public class Cartas_MagicFragment extends Fragment {
         );
         listaCartas.setAdapter(adapter);
 
-        listaCartas.setOnClickListener(new AdapterView.OnItemClickListener(){
+        listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
