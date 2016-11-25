@@ -74,6 +74,10 @@ public class Cartas_MagicFragment extends Fragment {
                     Carta c = (Carta) adapterView.getItemAtPosition(i);
 
                     Intent intent = new Intent(getContext(), DetailActivity.class);
+
+                    intent.putExtra("carta", c);
+
+                    startActivity(intent);
             }
         });
 
