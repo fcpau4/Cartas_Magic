@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static com.example.a47276138y.cartas_magic.R.id.title_detail;
 
 /**
  * A placeholder fragment containing a simple view.
