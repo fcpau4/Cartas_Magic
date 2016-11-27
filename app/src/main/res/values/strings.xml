@@ -139,4 +139,9 @@
     <string name="hello">Hello</string>
     <string name="color5">Color</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="color_detalle">Color detalle</string>
+    <string name="rarity_detalle">Rarity detalle</string>
+    <string name="text_detalle">Text detalle</string>
+    <string name="titulo_detalle">Titulo detalle</string>
+    <string name="resistencia_detalle">Resistencia detalle</string>
 </resources>

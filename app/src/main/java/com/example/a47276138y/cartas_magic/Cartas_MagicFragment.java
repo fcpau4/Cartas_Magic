@@ -67,14 +67,16 @@ public class Cartas_MagicFragment extends Fragment {
         );
         listaCartas.setAdapter(adapter);
 
-        listaCartas.setOnClickListener(new AdapterView.OnItemClickListener(){
+        listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-                    Carta carta = (Carta) adapterView.getItemAtPosition(i);
+
+                Carta c = (Carta) adapterView.getItemAtPosition(i);
 
                     Intent intent = new Intent(getContext(), DetailActivity.class);
-                    intent.putExtra("carta", carta);
+
+                    intent.putExtra("carta", c);
 
                     startActivity(intent);
             }
