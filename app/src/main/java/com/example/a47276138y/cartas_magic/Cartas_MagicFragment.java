@@ -31,6 +31,7 @@ public class Cartas_MagicFragment extends Fragment {
 
     public ArrayList<Carta> dataList;
     private CartasAdapter adapter;
+    private FragmentDetailBinding binding;
 
 
     public Cartas_MagicFragment() {
@@ -55,7 +56,7 @@ public class Cartas_MagicFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        FragmentDetailBinding binding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_cartas__magic, container, false);
 
         View view = binding.getRoot();
