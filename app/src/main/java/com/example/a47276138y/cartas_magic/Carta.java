@@ -37,5 +37,4 @@ public class Carta implements Serializable{
     public String toString(){
         return  "\n\t\t" + name + "\n\t\t" + rarity +  "\n\t\t" + tipus + "\n\t\t " + color;
     }
-
 }

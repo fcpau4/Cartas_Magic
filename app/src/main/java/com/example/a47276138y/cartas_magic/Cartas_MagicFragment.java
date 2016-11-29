@@ -138,15 +138,13 @@ public class Cartas_MagicFragment extends Fragment {
             String rarity = preferences.getString("rarity_list", "Mythic Rare");
             String color = preferences.getString("color_list", "White");
 
-
-            MagicTheGatheringAPI api = new MagicTheGatheringAPI();
             ArrayList<Carta> result= new ArrayList<>() ;
             try {
 
-                result = api.getCardsByPreferences(color, rarity);
+                result = MagicTheGatheringAPI.getCardsByPreferences(color, rarity);
 
                 if(result==null){
-                    result = api.getCartes();
+                    result = MagicTheGatheringAPI.getCartes();
                 }
 
             } catch (IOException e) {

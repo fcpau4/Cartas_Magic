@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class MagicTheGatheringAPI{
 
-        private final String BASE_URL = "https://api.magicthegathering.io/v1/cards";
+        private final static String BASE_URL = "https://api.magicthegathering.io/v1/cards";
 
-        public ArrayList<Carta> jsonProcess(String jsonResponse) throws JSONException {
+        public static ArrayList<Carta> jsonProcess(String jsonResponse) throws JSONException {
 
             ArrayList<Carta> cartes = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class MagicTheGatheringAPI{
                 }
 
                 if(jsonCarta.has("text")){
-                    c.setText(jsonCarta.getString("text"));
+                    c.setDescrip(jsonCarta.getString("text"));
                 }
 
                 cartes.add(c);
@@ -78,7 +78,7 @@ public class MagicTheGatheringAPI{
 
 
 
-        private ArrayList<Carta> doCall(String url) throws IOException {
+        private static ArrayList<Carta> doCall(String url) throws IOException {
             String JsonResponse = HttpUtils.get(url);
             try {
                 return jsonProcess(JsonResponse);
@@ -89,7 +89,7 @@ public class MagicTheGatheringAPI{
         }
 
 
-        public ArrayList<Carta> getCartes() throws IOException {
+        public static ArrayList<Carta> getCartes() throws IOException {
             Uri builturi = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -100,7 +100,7 @@ public class MagicTheGatheringAPI{
 
 
 
-        public ArrayList<Carta>getCardsByPreferences(String colors, String rarity) throws IOException {
+        public static ArrayList<Carta>getCardsByPreferences(String colors, String rarity) throws IOException {
             Uri builturi = Uri.parse(BASE_URL)
                     .buildUpon()
                     .appendQueryParameter("colors", colors)
