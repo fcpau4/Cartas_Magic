@@ -1,6 +1,7 @@
 package com.example.a47276138y.cartas_magic;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,22 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.a47276138y.cartas_magic.databinding.FragmentDetailBinding;
 
-import static com.example.a47276138y.cartas_magic.R.id.title_detail;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class DetailActivityFragment extends Fragment {
 
-    private ImageView image_detail;
-    private TextView title_detail;
-    private TextView type_detail;
-    private TextView rarity_detail;
-    private TextView color_detail;
-    private TextView resistencia;
-    private TextView text_detail;
 
+    private FragmentDetailBinding binding;
     private View view;
 
 
@@ -36,7 +31,10 @@ public class DetailActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_detail, container, false);
+
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_detail, container, false);
+        view = binding.getRoot();
 
                      Intent i = getActivity().getIntent();
 
@@ -53,23 +51,12 @@ public class DetailActivityFragment extends Fragment {
 
     private void updateUi(Carta carta) {
 
-        image_detail =(ImageView) view.findViewById(R.id.image_detail);
-        title_detail = (TextView) view.findViewById(R.id.title_detail);
-        type_detail = (TextView) view.findViewById(R.id.type_detail);
-        rarity_detail= (TextView) view.findViewById(R.id.rarity_detail);
-        color_detail = (TextView) view.findViewById(R.id.color_detail);
-        resistencia= (TextView) view.findViewById(R.id.resistencia);
-        text_detail = (TextView) view.findViewById(R.id.text_detail);
-
-
-        Glide.with(getContext()).load(carta.getImgURL()).into(image_detail);
-        title_detail.setText(carta.getName());
-        type_detail.setText(carta.getTipus());
-        rarity_detail.setText(carta.getRarity());
-        color_detail.setText(carta.getColor());
-        resistencia.setText(carta.getResistencia());
-        text_detail.setText(carta.getText());
-
+        Glide.with(getContext()).load(carta.getImgURL()).into(binding.imageDetail);
+        binding.titleDetail.setText(carta.getName());
+        binding.typeDetail.setText(carta.getTipus());
+        binding.rarityDetail.setText(carta.getRarity());
+        binding.resistencia.setText(carta.getResistencia());
+        binding.textDetail.setText(carta.getDescrip());
 
         Log.d("CARTA", carta.toString());
     }

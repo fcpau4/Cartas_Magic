@@ -2,12 +2,12 @@ package com.example.a47276138y.cartas_magic;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,9 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import android.widget.ListView;
+import com.example.a47276138y.cartas_magic.databinding.FragmentCartasMagicBinding;
+import com.example.a47276138y.cartas_magic.databinding.FragmentDetailBinding;
 import java.io.IOException;
 import java.util.ArrayList;
+
+
 
 
 /**
@@ -28,8 +31,8 @@ public class Cartas_MagicFragment extends Fragment {
 
 
     public ArrayList<Carta> dataList;
-    private CartasAdapter adapter;
-
+    public CartasAdapter adapter;
+    public FragmentCartasMagicBinding binding;
 
 
     public Cartas_MagicFragment() {
@@ -42,11 +45,6 @@ public class Cartas_MagicFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        PreferenceManager.setDefaultValues(this.getContext(), R.xml.pref_general, false);
-        /*Serveix per inicialitzar el SharedPreferences on es guarden les key úniques (android:key) que utilitza el sistema
-        quan guarda els valors de cada preferència/setting.
-        */
-
     }
 
     @Override
@@ -54,9 +52,10 @@ public class Cartas_MagicFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_cartas__magic, container, false);
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_cartas__magic, container, false);
 
-        ListView listaCartas = (ListView) view.findViewById(R.id.listaCartas);
+        View view = binding.getRoot();
 
         dataList = new ArrayList<>();
 
@@ -65,9 +64,11 @@ public class Cartas_MagicFragment extends Fragment {
                 R.layout.lista_cartas_row,
                 dataList
         );
-        listaCartas.setAdapter(adapter);
 
-        listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+        binding.listaCartas.setAdapter(adapter);
+
+        binding.listaCartas.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
