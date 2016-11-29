@@ -154,14 +154,14 @@ public class Cartas_MagicFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            UriHelper helper = UriHelper.with(MagicTheGatheringContentProvider.AUTHORITY);
-
+            /*UriHelper helper = UriHelper.with(MagicTheGatheringContentProvider.AUTHORITY);
             Uri movieUri = helper.getUri(Carta.class);
+            cupboard().withContext(getContext()).put(movieUri, Carta.class, result);*/
 
-            cupboard().withContext(getContext()).put(movieUri, Carta.class, result);
+            DataManager.deleteMovies(getContext());
+            DataManager.saveCards(result, getContext());
 
             return null;
-
         }
 
 
