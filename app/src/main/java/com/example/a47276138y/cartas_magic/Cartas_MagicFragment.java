@@ -3,6 +3,7 @@ package com.example.a47276138y.cartas_magic;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -21,7 +22,9 @@ import com.example.a47276138y.cartas_magic.databinding.FragmentDetailBinding;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import nl.littlerobots.cupboard.tools.provider.UriHelper;
 
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 
 /**
@@ -129,7 +132,7 @@ public class Cartas_MagicFragment extends Fragment {
 
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>>{
+    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList>{
 
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
@@ -150,17 +153,21 @@ public class Cartas_MagicFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return result;
-            }
 
-        @Override
-        protected void onPostExecute(ArrayList<Carta> cartes) {
-            super.onPostExecute(cartes);
-            adapter.clear();
-            for (Carta carta : cartes) {
-                adapter.add(carta);
-            }
+            UriHelper helper = UriHelper.with(MagicTheGatheringContentProvider.AUTHORITY);
+
+            Uri movieUri = helper.getUri(Carta.class);
+
+            cupboard().withContext(getContext()).put(movieUri, Carta.class, result);
+
+            return null;
+
         }
+
+
+
     }
 
 }
+
+
