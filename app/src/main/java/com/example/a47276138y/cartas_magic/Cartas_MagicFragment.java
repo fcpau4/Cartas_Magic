@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.example.a47276138y.cartas_magic.databinding.FragmentCartasMagicBinding;
 import com.example.a47276138y.cartas_magic.databinding.FragmentDetailBinding;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class Cartas_MagicFragment extends Fragment {
 
 
     public ArrayList<Carta> dataList;
-    private CartasAdapter adapter;
-    private FragmentDetailBinding binding;
+    public CartasAdapter adapter;
+    public FragmentCartasMagicBinding binding;
 
 
     public Cartas_MagicFragment() {
@@ -43,11 +44,6 @@ public class Cartas_MagicFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-
-        PreferenceManager.setDefaultValues(this.getContext(), R.xml.pref_general, false);
-        /*Serveix per inicialitzar el SharedPreferences on es guarden les key úniques (android:key) que utilitza el sistema
-        quan guarda els valors de cada preferència/setting.
-        */
 
     }
 
