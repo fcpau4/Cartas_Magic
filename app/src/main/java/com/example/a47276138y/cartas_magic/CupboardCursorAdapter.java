@@ -14,44 +14,44 @@ import nl.qbusict.cupboard.Cupboard;
 
 public abstract class CupboardCursorAdapter<T> extends CursorAdapter {
 
-    private final Cupboard cb;
+    private final Cupboard cupboard;
     private Class<T> mEntityClass;
 
 
-    public CupboardCursorAdapter(Context context, Cursor c) {
-        super(context, c);
+    public CupboardCursorAdapter(Context context, Class<T> entityClass) {
+        this(context, cupboard(), entityClass, null);
     }
 
-    public CupboardCursorAdapter(Context context, Cursor c, boolean autoRequery) {
-        super(context, c, autoRequery);
-    }
-
-    public CupboardCursorAdapter(Context context, Cursor c, int flags) {
-        super(context, c, flags);
+    public CupboardCursorAdapter(Context context, Cupboard cupboard, Class<T> entityClass) {
+               this(context, cupboard, entityClass, null);
     }
 
 
     public CupboardCursorAdapter(Context context, Cupboard cupboard, Class<T> entityClass, Cursor cursor) {
                 super(context, cursor, false);
                 this.mEntityClass = entityClass;
-                this.cb = cupboard;
+                this.cupboard = cupboard;
             }
+
+
+    public abstract View newView(Context context, T model, ViewGroup parent);
+
+    public abstract void bindView(View view, Context context, T model);
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return
+        return newView(context, getItem(cursor.getPosition()), parent);
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-
+        bindView(view, context, getItem(cursor.getPosition()));
     }
-
 
 
     public T getItem(int position) {
          if (getCursor().moveToPosition(position)) {
-                    return cb.withCursor(getCursor()).get(mEntityClass);
+                    return cupboard.withCursor(getCursor()).get(mEntityClass);
                 } else {
                     throw new IllegalArgumentException("Invalid position: " + position);
                 }
