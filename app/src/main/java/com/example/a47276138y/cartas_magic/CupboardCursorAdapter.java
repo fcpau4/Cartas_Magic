@@ -8,13 +8,15 @@ import android.widget.CursorAdapter;
 
 import nl.qbusict.cupboard.Cupboard;
 
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
+
 /**
  * Created by 47276138y on 29/11/16.
  */
 
 public abstract class CupboardCursorAdapter<T> extends CursorAdapter {
 
-    private final Cupboard cupboard;
+    private final Cupboard mCupboard;
     private Class<T> mEntityClass;
 
 
@@ -30,7 +32,7 @@ public abstract class CupboardCursorAdapter<T> extends CursorAdapter {
     public CupboardCursorAdapter(Context context, Cupboard cupboard, Class<T> entityClass, Cursor cursor) {
                 super(context, cursor, false);
                 this.mEntityClass = entityClass;
-                this.cupboard = cupboard;
+                this.mCupboard = cupboard;
             }
 
 
@@ -51,7 +53,7 @@ public abstract class CupboardCursorAdapter<T> extends CursorAdapter {
 
     public T getItem(int position) {
          if (getCursor().moveToPosition(position)) {
-                    return cupboard.withCursor(getCursor()).get(mEntityClass);
+                    return mCupboard.withCursor(getCursor()).get(mEntityClass);
                 } else {
                     throw new IllegalArgumentException("Invalid position: " + position);
                 }

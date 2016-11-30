@@ -33,9 +33,10 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 public class Cartas_MagicFragment extends Fragment {
 
 
-    public ArrayList<Carta> dataList;
-    public CartasAdapter adapter;
-    public FragmentCartasMagicBinding binding;
+    private ArrayList<Carta> dataList;
+    //private CartasAdapter adapter;
+    private CupboardCursorAdapter adapter;
+    private FragmentCartasMagicBinding binding;
 
 
     public Cartas_MagicFragment() {
@@ -62,12 +63,13 @@ public class Cartas_MagicFragment extends Fragment {
 
         dataList = new ArrayList<>();
 
-        adapter = new CartasAdapter(
+        /*adapter = new CartasAdapter(
                 getContext(),
                 R.layout.lista_cartas_row,
                 dataList
-        );
+        );*/
 
+        adapter = new CupboardCursorAdapter(getContext(), Carta.class);
 
         binding.listaCartas.setAdapter(adapter);
 
