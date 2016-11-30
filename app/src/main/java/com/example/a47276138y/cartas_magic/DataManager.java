@@ -1,7 +1,9 @@
 package com.example.a47276138y.cartas_magic;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
+import android.support.v4.content.Loader;
 
 import java.util.ArrayList;
 
@@ -26,4 +28,7 @@ public class DataManager {
         cupboard().withContext(context).delete(CARTA_URI, "_id > ?", "1");
         }
 
+    public static Loader<Cursor> getCursorLoader(Context context) {
+        return getCursorLoader(context);
+    }
 }

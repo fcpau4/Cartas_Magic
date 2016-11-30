@@ -1,7 +1,9 @@
 package com.example.a47276138y.cartas_magic;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -9,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,10 +34,10 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class Cartas_MagicFragment extends Fragment {
+public class Cartas_MagicFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
 
-    private ArrayList<Carta> dataList;
+    //private ArrayList<Carta> dataList;
     //private CartasAdapter adapter;
     private CupboardCursorAdapter adapter;
     private FragmentCartasMagicBinding binding;
@@ -61,7 +65,7 @@ public class Cartas_MagicFragment extends Fragment {
 
         View view = binding.getRoot();
 
-        dataList = new ArrayList<>();
+        //dataList = new ArrayList<>();
 
         /*adapter = new CartasAdapter(
                 getContext(),
@@ -87,6 +91,8 @@ public class Cartas_MagicFragment extends Fragment {
                     startActivity(intent);
             }
         });
+
+        getLoaderManager().initLoader(0, null, this);
 
         return view;
     }
@@ -132,6 +138,20 @@ public class Cartas_MagicFragment extends Fragment {
         task.execute();
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return DataManager.getCursorLoader(getContext());
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        adapter.swapCursor(null);
+    }
 
 
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList>{
