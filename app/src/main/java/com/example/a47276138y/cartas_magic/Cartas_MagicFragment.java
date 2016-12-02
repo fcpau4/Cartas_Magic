@@ -39,7 +39,7 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
 
     //private ArrayList<Carta> dataList;
     //private CartasAdapter adapter;
-    private CupboardCursorAdapter adapter;
+    private CartasCursorAdapter adapter;
     private FragmentCartasMagicBinding binding;
 
 
@@ -73,7 +73,7 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
                 dataList
         );*/
 
-        adapter = new CupboardCursorAdapter(getContext(), Carta.class);
+        adapter = new CartasCursorAdapter(getContext(), Carta.class);
 
         binding.listaCartas.setAdapter(adapter);
 
