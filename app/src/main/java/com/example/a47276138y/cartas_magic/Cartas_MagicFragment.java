@@ -20,9 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-
 import com.example.a47276138y.cartas_magic.databinding.FragmentCartasMagicBinding;
-import com.example.a47276138y.cartas_magic.databinding.FragmentDetailBinding;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -40,7 +38,6 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     //private ArrayList<Carta> dataList;
     //private CartasAdapter adapter;
     private CartasCursorAdapter adapter;
-    private FragmentCartasMagicBinding binding;
 
 
     public Cartas_MagicFragment() {
@@ -60,7 +57,7 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
                              Bundle savedInstanceState) {
 
 
-        binding = DataBindingUtil.inflate(
+        FragmentCartasMagicBinding  binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_cartas__magic, container, false);
 
         View view = binding.getRoot();
@@ -154,10 +151,10 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     }
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList>{
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void>{
 
         @Override
-        protected ArrayList<Carta> doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids) {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String rarity = preferences.getString("rarity_list", "Mythic Rare");

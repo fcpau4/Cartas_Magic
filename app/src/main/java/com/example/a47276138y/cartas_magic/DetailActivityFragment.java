@@ -19,7 +19,7 @@ public class DetailActivityFragment extends Fragment {
 
 
     private FragmentDetailBinding binding;
-    private View view;
+    View view;
 
 
     public DetailActivityFragment() {
@@ -31,7 +31,7 @@ public class DetailActivityFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_detail, container, false);
-        view = binding.getRoot();
+        View view = binding.getRoot();
 
                      Intent i = getActivity().getIntent();
 
