@@ -52,6 +52,7 @@ public class DetailActivityFragment extends Fragment {
         binding.titleDetail.setText(carta.getName());
         binding.typeDetail.setText(carta.getTipus());
         binding.rarityDetail.setText(carta.getRarity());
+        binding.colorDetail.setText(carta.getColor());
         binding.resistencia.setText(carta.getResistencia());
         binding.textDetail.setText(carta.getDescrip());
 
