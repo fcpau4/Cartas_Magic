@@ -35,6 +35,8 @@ public class CartasCursorAdapter extends CupboardCursorAdapter<Carta> {
         ListaCartasRowBinding binding = DataBindingUtil.getBinding(view);
                 binding.nameCard.setText(model.getName());
                 binding.typeCard.setText(model.getTipus());
+                binding.colorCard.setText(model.getColor());
+                binding.rarityCard.setText(model.getRarity());
                 Glide.with(context).load(model.getImgURL()).into(binding.imgCard);
     }
 }
