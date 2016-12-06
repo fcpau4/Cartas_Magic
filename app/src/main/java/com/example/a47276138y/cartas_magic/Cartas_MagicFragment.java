@@ -1,5 +1,6 @@
 package com.example.a47276138y.cartas_magic;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,6 +39,7 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     //private ArrayList<Carta> dataList;
     //private CartasAdapter adapter;
     private CartasCursorAdapter adapter;
+    private ProgressDialog dialog;
 
 
     public Cartas_MagicFragment() {
@@ -71,6 +73,9 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
         );*/
 
         adapter = new CartasCursorAdapter(getContext(), Carta.class);
+
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("Loading...");
 
         binding.listaCartas.setAdapter(adapter);
 
@@ -126,7 +131,6 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
     }
 
 
@@ -134,6 +138,10 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
         RefreshDataTask task = new RefreshDataTask();
         task.execute();
     }
+
+
+
+
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -151,7 +159,18 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     }
 
 
+
+
+
+
     private class RefreshDataTask extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            dialog.show();
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -177,14 +196,18 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
             Uri movieUri = helper.getUri(Carta.class);
             cupboard().withContext(getContext()).put(movieUri, Carta.class, result);*/
 
-            DataManager.deleteMovies(getContext());
+            DataManager.deleteCards(getContext());
             DataManager.saveCards(result, getContext());
 
             return null;
         }
 
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
 
-
+            dialog.dismiss();
+        }
     }
 
 }
