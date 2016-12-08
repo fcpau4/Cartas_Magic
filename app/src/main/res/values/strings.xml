@@ -145,5 +145,7 @@
     <string name="titulo_detalle">Titulo detalle</string>
     <string name="resistencia_detalle">Resistencia detalle</string>
     <string name="type_detalle">Type detalle</string>
+    <string name="fragment_list_view">fragment_list_view</string>
+    <string name="fragment_detail">fragment_detail</string>
 
 </resources>
