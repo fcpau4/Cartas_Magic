@@ -21,6 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
+import com.alexvasilkov.events.Events;
 import com.example.a47276138y.cartas_magic.databinding.FragmentCartasMagicBinding;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -93,6 +95,8 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
 
                         startActivity(intent);
 
+                    }else{
+                        Events.create("card-selected").param(c).post();
                     }
             }
         });

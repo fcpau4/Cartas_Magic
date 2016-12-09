@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.alexvasilkov.events.Event;
+import com.alexvasilkov.events.Events;
 import com.bumptech.glide.Glide;
 import com.example.a47276138y.cartas_magic.databinding.FragmentDetailBinding;
 
@@ -23,6 +26,15 @@ public class DetailActivityFragment extends Fragment {
 
 
     public DetailActivityFragment() {
+    }
+
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        Events.register(this);
+
     }
 
     @Override
@@ -44,6 +56,12 @@ public class DetailActivityFragment extends Fragment {
                    }
 
         return view;
+    }
+
+
+    @Events.Subscribe("card-selected")
+    private void onCardSelected(Carta card){
+        updateUi(card);
     }
 
     private void updateUi(Carta carta) {
