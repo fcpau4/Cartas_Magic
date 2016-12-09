@@ -26,7 +26,7 @@ public class DataManager {
     }
 
     static void deleteCards(Context context) {
-        cupboard().withContext(context).delete(CARTA_URI, "_id > ?", "0");
+        cupboard().withContext(context).delete(CARTA_URI, "_id > ?", "1");
         }
 
     static CursorLoader getCursorLoader(Context context) {

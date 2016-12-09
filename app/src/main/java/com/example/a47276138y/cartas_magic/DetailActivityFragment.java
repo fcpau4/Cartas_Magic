@@ -66,6 +66,7 @@ public class DetailActivityFragment extends Fragment {
 
     private void updateUi(Carta carta) {
 
+
         Glide.with(getContext()).load(carta.getImgURL()).into(binding.imageDetail);
         binding.titleDetail.setText(carta.getName());
         binding.typeDetail.setText(carta.getTipus());

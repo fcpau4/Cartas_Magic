@@ -145,6 +145,7 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     public void onStart() {
         super.onStart();
         Events.register(this);
+        refresh();
     }
 
 
