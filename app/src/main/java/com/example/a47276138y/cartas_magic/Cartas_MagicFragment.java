@@ -93,6 +93,22 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     }
 
 
+
+    @Events.Subscribe("start-downloading-data")
+    void preRefresh(){
+        dialog.show();
+    }
+
+
+
+    @Events.Subscribe("finish-downloading-data")
+    void afterRefresh(){
+        dialog.dismiss();
+    }
+
+
+
+
     boolean isTablet(){
         return getResources().getBoolean(R.bool.tablet);
     }
@@ -129,6 +145,7 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
+        Events.register(this);
     }
 
 
