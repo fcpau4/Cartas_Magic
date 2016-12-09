@@ -37,7 +37,6 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
     private CartasCursorAdapter adapter;
     private ProgressDialog dialog;
 
-
     public Cartas_MagicFragment() {
     }
 
