@@ -84,19 +84,27 @@ public class Cartas_MagicFragment extends Fragment implements LoaderManager.Load
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
 
-                Carta c = (Carta) adapterView.getItemAtPosition(i);
+                    Carta c = (Carta) adapterView.getItemAtPosition(i);
 
-                    Intent intent = new Intent(getContext(), DetailActivity.class);
+                    if(!isTablet()){
 
-                    intent.putExtra("carta", c);
+                        Intent intent = new Intent(getContext(), DetailActivity.class);
+                        intent.putExtra("carta", c);
 
-                    startActivity(intent);
+                        startActivity(intent);
+
+                    }
             }
         });
 
         getLoaderManager().initLoader(0, null, this);
 
         return view;
+    }
+
+
+    boolean isTablet(){
+        return getResources().getBoolean(R.bool.tablet);
     }
 
 
